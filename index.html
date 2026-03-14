@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat fixed, linear-gradient(135deg, #ffe5b4 0%, #ffb347 100%);
+        }
+        .container, .container2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: rgba(255,255,255,0.7);
+            border-radius: 30px;
+            margin: 2vw;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        #mainText, #mainText2 {
+            color: #d72660;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Segoe Script', cursive;
+            text-shadow: 2px 2px 8px #fff;
+        }
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.3rem;
+            color: #fff;
+            background: #d72660;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(215,38,96,0.2);
+            transition: background 0.3s, transform 0.2s;
+            margin: 0 1rem;
+        }
+        .btn:active {
+            background: #a91d4a;
+        }
+        #noBtn, #noBtn2 {
+            background: #888;
+        }
+        .images {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .images img {
+            border-radius: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+        }
+        #hearts, #flowers, #hearts2, #flowers2 {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .hidden { display: none; }
+    </style>
+    <div class="container" id="page1">
+        <h1 id="mainText">din aastaudai xa raat daldai xa<br>tmro mutu ko blockage kholna yo nonsense aaudai xa<br>huss ❤</h1>
+        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+            <button id="hussBtn" class="btn">huss</button>
+            <button id="noAauBtn" class="btn">nai na aau</button>
+        </div>
+        <div class="images">
+            <div>
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Cheesecake">
+                <div style="text-align:center; font-weight:bold; color:#d72660;">Cheesecake</div>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Cotton Candy Ice Cream">
+                <div style="text-align:center; font-weight:bold; color:#d72660;">Cotton Candy Ice Cream</div>
+            </div>
+        </div>
+        <div style="margin-top: 1.5rem; font-size: 1.2rem; color: #a0522d; font-family: 'Segoe Script', cursive;">
+            <span>💖 With love, blessings, and vibrant vibes 💖</span>
+        </div>
+        <div id="hearts"></div>
+        <div id="flowers"></div>
+    </div>
+    <div class="container2 hidden" id="page2">
+        <h1 id="mainText2">Wanna hangout subuu?</h1>
+        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+            <button id="yes2Btn" class="btn">yes i wanna ❤</button>
+            <button id="no2Btn" class="btn">no why would i</button>
+        </div>
+        <div class="images">
+            <div>
+                <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Cotton Candy Ice Cream">
+                <div style="text-align:center; font-weight:bold; color:#d72660;">Cotton Candy Ice Cream</div>
+            </div>
+        </div>
+        <div style="margin-top: 1.5rem; font-size: 1.2rem; color: #a0522d; font-family: 'Segoe Script', cursive;">
+            <span>💖 With love, flowers & hearts 💖</span>
+        </div>
+        <div id="hearts2"></div>
+        <div id="flowers2"></div>
+    </div>
+    <script>
+    // Heart animation
+    function createHeart(target) {
+        const heart = document.createElement('div');
+        heart.innerHTML = '❤';
+        heart.style.position = 'absolute';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = '100vh';
+        heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+        heart.style.color = '#d72660';
+        heart.style.opacity = Math.random() * 0.5 + 0.5;
+        heart.style.transition = 'top 2.5s linear, opacity 2.5s linear';
+        document.getElementById(target).appendChild(heart);
+        setTimeout(() => {
+            heart.style.top = (Math.random() * 60 + 10) + 'vh';
+            heart.style.opacity = 0;
+        }, 50);
+        setTimeout(() => {
+            heart.remove();
+        }, 2550);
+    }
+
+    // Flower animation
+    function createFlower(target) {
+        const flower = document.createElement('div');
+        flower.innerHTML = '🌸';
+        flower.style.position = 'absolute';
+        flower.style.left = Math.random() * 100 + 'vw';
+        flower.style.top = '100vh';
+        flower.style.fontSize = (Math.random() * 30 + 20) + 'px';
+        flower.style.opacity = Math.random() * 0.5 + 0.5;
+        flower.style.transition = 'top 3s linear, opacity 3s linear';
+        document.getElementById(target).appendChild(flower);
+        setTimeout(() => {
+            flower.style.top = (Math.random() * 60 + 10) + 'vh';
+            flower.style.opacity = 0;
+        }, 50);
+        setTimeout(() => {
+            flower.remove();
+        }, 3050);
+    }
+
+    // Page 1 logic
+    const hussBtn = document.getElementById('hussBtn');
+    const noAauBtn = document.getElementById('noAauBtn');
+    hussBtn.onclick = function() {
+        // Animate
+        for (let i = 0; i < 30; i++) {
+            setTimeout(() => createHeart('hearts'), i * 80);
+            setTimeout(() => createFlower('flowers'), i * 100);
+        }
+        // Go to page 2 after animation
+        setTimeout(() => {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
+        }, 2000);
+    };
+    noAauBtn.onclick = function(e) {
+        e.preventDefault();
+        alert('Try again!');
+    };
+
+    // Page 2 logic
+    const yes2Btn = document.getElementById('yes2Btn');
+    const no2Btn = document.getElementById('no2Btn');
+    yes2Btn.onclick = function() {
+        for (let i = 0; i < 30; i++) {
+            setTimeout(() => createHeart('hearts2'), i * 80);
+            setTimeout(() => createFlower('flowers2'), i * 100);
+        }
+        document.getElementById('mainText2').innerText = 'Yay! See you soon, subuu! ❤';
+    };
+    no2Btn.onclick = function(e) {
+        e.preventDefault();
+        alert('Try again!');
+    };
+    </script>
+</body>
+</html>
